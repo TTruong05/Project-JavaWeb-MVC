@@ -29,7 +29,7 @@ public class IndexOrderItemServlet extends BaseAdminServlet {
         Order order = orderDao.find(orderId);
         
         OrderItemDao orderItemDao = DatabaseDao.getInstance().getOrderItemDao();
-        List<OrderItem> orderItemList = orderItemDao.findByOder(orderId);
+        List<OrderItem> orderItemList = orderItemDao.findByOrder(orderId);
         
         request.setAttribute("order", order); 
         request.setAttribute("orderItemList", orderItemList);         

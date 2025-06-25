@@ -12,7 +12,7 @@ import truong.dev.data.model.User;
 
 public class UserImpl implements UserDAO {
 
-    Connection con = MySQLDriver.getInstance().getConnection();
+       Connection con = MySQLDriver.getInstance().getConnection();
 
     @Override
     public boolean insert(User user) {

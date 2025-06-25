@@ -44,7 +44,7 @@
                     <td>Image</td>
                     <td>Product</td>
                     <td>Value of order</td>
-                    <td>Quantity</td> <%-- ?ã s?a 'Quantidy' thành 'Quantity' --%>
+                    <td>Quantity</td> <%-- ?? s?a 'Quantidy' th?nh 'Quantity' --%>
                     <td>Price</td>
                 </tr>
             </thead>
@@ -61,7 +61,7 @@
                         </td>
                         <td><img src="${orderItem.product.thumbnail}""></td>
                         <td>${orderItem.product.name}</td>
-                        <%-- **THAY ??I: C?t Price hi?n th? giá ??n v?** --%>
+                        <%-- **THAY ??I: C?t Price hi?n th? gi? ??n v?** --%>
                         <td>$<fmt:formatNumber value="${orderItem.price}" pattern="#,##0.00"/></td>
                         <td>
                             <form action="CartServlet" method="post">
@@ -70,10 +70,10 @@
                                 <input onchange="this.form.submit()" name="quantity" type="number" value="${orderItem.quantity}" min="1">
                             </form>
                         </td>
-                        <%-- **THAY ??I: C?t Subtotal hi?n th? t?ng giá tr? c?a dòng hàng** --%>
+                        <%-- **THAY ??I: C?t Subtotal hi?n th? t?ng gi? tr? c?a d?ng h?ng** --%>
                         <td>$<fmt:formatNumber value="${orderItem.price * orderItem.quantity}" pattern="#,##0.00"/></td>
                     </tr>
-                    <%-- **THAY ??I: C?ng d?n giá tr? c?a t?ng dòng hàng vào overallTotal** --%>
+                    <%-- **THAY ??I: C?ng d?n gi? tr? c?a t?ng d?ng h?ng v?o overallTotal** --%>
                     <c:set var="overallTotal" value="${overallTotal + (orderItem.price * orderItem.quantity)}" />
                 </c:forEach>
             </tbody>
@@ -107,7 +107,15 @@
                     <td><strong>$<fmt:formatNumber value="${overallTotal}" pattern="#,##0.00"/></strong></td>
                 </tr>
             </table>
-            <button class="normal">Proceed to checkout</button>
+            <c:if test="${sessionScope.user != null}">
+                <form action="CheckoutServlet" method="post">
+                    <button class="normal" type="submit">Proceed to checkout</button>
+                </form>
+            </c:if>
+            <c:if test="${sessionScope.user == null}">
+                <p>Please <a href="login.jsp">login</a> to continue checkout.</p>
+                <button class="normal" onclick="window.location.href='login.jsp'">Proceed to checkout</button>
+            </c:if>
         </div>
     </section>
 
@@ -124,17 +132,17 @@
                  }
                });
 
-               // Ch?n T?T C? các slider có class 'product-slider'
+               // Ch?n T?T C? c?c slider c? class 'product-slider'
                const productSliders = document.querySelectorAll(".product-slider");
 
-               // L?p qua t?ng slider ?? g?n s? ki?n và logic
+               // L?p qua t?ng slider ?? g?n s? ki?n v? logic
                productSliders.forEach(productSlider => {
-                 // Tìm m?i tên ?i?u khi?n trong cùng m?t wrapper v?i slider hi?n t?i
+                 // T?m m?i t?n ?i?u khi?n trong c?ng m?t wrapper v?i slider hi?n t?i
                  const productCarouselWrapper = productSlider.closest(".product-carousel-wrapper");
                  const leftArrow = productCarouselWrapper ? productCarouselWrapper.querySelector(".left-arrow") : null;
                  const rightArrow = productCarouselWrapper ? productCarouselWrapper.querySelector(".right-arrow") : null;
 
-                 // Function ?? cu?n slider c? th? này
+                 // Function ?? cu?n slider c? th? n?y
                  function scrollSlider(direction) {
                    const productWidth = productSlider.querySelector(".prod").offsetWidth;
                    const scrollAmount = productWidth * 3;
@@ -152,7 +160,7 @@
                    }
                  }
 
-                 // G?n s? ki?n click cho m?i tên
+                 // G?n s? ki?n click cho m?i t?n
                  if (leftArrow) {
                    leftArrow.addEventListener("click", () => scrollSlider("left"));
                  }
@@ -168,7 +176,7 @@
                      rightArrow.style.display = "block";
                  }
 
-               }); // K?t thúc vòng l?p foreach
+               }); // K?t th?c v?ng l?p foreach
              });
          </script>
 </body>

@@ -132,6 +132,10 @@
         <servlet-name>IndexOrderItemServlet</servlet-name>
         <servlet-class>truong.dev.admin.orderitem.IndexOrderItemServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <servlet-class>truong.dev.admin.pay.CheckoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AboutServlet</servlet-name>
         <url-pattern>/AboutServlet</url-pattern>
@@ -263,5 +267,9 @@
     <servlet-mapping>
         <servlet-name>IndexOrderItemServlet</servlet-name>
         <url-pattern>/IndexOrderItemServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <url-pattern>/CheckoutServlet</url-pattern>
     </servlet-mapping>
 </web-app>

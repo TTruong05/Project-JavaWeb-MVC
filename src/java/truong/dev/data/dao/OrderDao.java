@@ -24,5 +24,6 @@ public interface OrderDao {
     public int countOrderByDay(String date);
 
     public double earningOrderByDay(String date);
-
+    public int countOrderByDayAndStatus(String date, String status);
+    
 }

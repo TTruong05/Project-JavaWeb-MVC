@@ -37,7 +37,11 @@ prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <body>
     <%@include file="./inc/header.jsp"%>
-
+     <c:if test="${param.orderSuccess == 'true'}">
+        <div class="alert alert-success text-center" role="alert" style="margin-top: 20px;">
+            Thank you! Your order has been placed successfully. We will process it as soon as possible.
+        </div>
+    </c:if>
     <section id="hero-slider">
       <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">

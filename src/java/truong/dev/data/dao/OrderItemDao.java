@@ -15,7 +15,7 @@ public interface OrderItemDao {
 
     public List<OrderItem> findAll();
 
-    public List<OrderItem> findByOder(int id);
+    public List<OrderItem> findByOrder(int id);
 
     public List<OrderItem> findByProduct(int id);
 
